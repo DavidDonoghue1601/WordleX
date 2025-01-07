@@ -24,6 +24,17 @@
                    TextColor="Black" />
         </HorizontalStackLayout>
 
+        <!-- Settings icon in the top right -->
+        <Label HorizontalOptions="End"
+       VerticalOptions="Start"
+       Margin="0,-140,0,0"
+       FontSize="70">
+            ⚙️
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnSettingsClicked" />
+            </Label.GestureRecognizers>
+        </Label>
+
 
 
         <!-- The grid -->

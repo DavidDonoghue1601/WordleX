@@ -239,5 +239,11 @@ namespace WordleX
         {
             StartNewGame(); //Starting a new game when "New Game" is pressed
         }
+
+        private async void OnSettingsClicked(object sender, EventArgs e)
+        {
+            // Navigate to SettingsPage when the settings icon is clicked
+            await Navigation.PushAsync(new SettingsPage());
+        }
     }
 }

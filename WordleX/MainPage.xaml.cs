@@ -179,7 +179,7 @@ namespace WordleX
             attemptsLabel.Text = $"Attempts left: {attemptsLeft}";
             feedbackLabel.Text = "Try to guess the word!";
         }
-        private void EndGame(bool won)
+        private void EndGame(bool won) //ends the game
         {
             gameOver = true;
             feedbackLabel.Text = won ? "You won!" : $"Game Over! The word was: {selectedWord}"; //if you won, print this
@@ -240,7 +240,7 @@ namespace WordleX
             StartNewGame(); //Starting a new game when "New Game" is pressed
         }
 
-        private async void OnSettingsClicked(object sender, EventArgs e)
+        private async void OnSettingsClicked(object sender, EventArgs e) //Settings button (for settings emoji in top right)
         {
             // Navigate to SettingsPage when the settings icon is clicked
             await Navigation.PushAsync(new SettingsPage());

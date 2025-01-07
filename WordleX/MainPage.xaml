@@ -81,6 +81,7 @@
                     HeightRequest="50" />
         </VerticalStackLayout>
 
+        <!-- Label at the bottom of the grid-->
         <Label x:Name="feedbackLabel"
        Text="Try to guess the word!"
        FontSize="18"
@@ -89,6 +90,7 @@
        TextColor="White"
        Margin="0,5" />
 
+        <!-- Shows number of attempts left -->
         <Label x:Name="attemptsLabel"
        FontSize="16"
        Text="Attempts left: 6"

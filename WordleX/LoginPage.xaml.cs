@@ -9,12 +9,12 @@ namespace WordleX
             InitializeComponent();
         }
 
-        private async void OnStartGameClicked(object sender, EventArgs e)
+        private async void OnStartGameClicked(object sender, EventArgs e) //Button for the Login page
         {
-            await NavigateToMainPage();
+            await NavigateToMainPage(); 
         }
 
-        private async Task NavigateToMainPage()
+        private async Task NavigateToMainPage() //Goes to the MainPage
         {
             await Navigation.PushAsync(new MainPage());
         }

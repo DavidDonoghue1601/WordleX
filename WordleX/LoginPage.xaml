@@ -30,6 +30,14 @@
        TextColor="Black"
        FontSize="18"
        WidthRequest="250" />
-        
+
+        <!-- Button to start game -->
+        <Button Text="Start Game"
+        Clicked="OnStartGameClicked"
+        BackgroundColor="Green"
+        TextColor="White"
+        FontAttributes="Bold"
+        CornerRadius="10"
+        WidthRequest="150" />
     </StackLayout>
 </ContentPage>

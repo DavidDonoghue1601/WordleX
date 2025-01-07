@@ -1,5 +1,3 @@
-
-
 namespace WordleX
 {
     public partial class LoginPage : ContentPage
@@ -10,7 +8,17 @@ namespace WordleX
         {
             InitializeComponent();
         }
-    }
 
-        
+        private async void OnStartGameClicked(object sender, EventArgs e)
+        {
+            await NavigateToMainPage();
+        }
+
+        private async Task NavigateToMainPage()
+        {
+            await Navigation.PushAsync(new MainPage());
+        }
+
+
+    }
 }

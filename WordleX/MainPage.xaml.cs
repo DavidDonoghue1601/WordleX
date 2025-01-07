@@ -1,10 +1,4 @@
-﻿using Microsoft.Maui.Controls;
-using System;
-using System.IO;
-using System.Linq;
-using System.Net.Http;
-using System.Threading.Tasks;
-using System.Collections.Generic; //My collections, was recommended to add these during bug fixes
+﻿//removed collections, appeared to make no difference
 
 namespace WordleX
 {

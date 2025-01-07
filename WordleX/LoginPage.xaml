@@ -5,6 +5,31 @@
              BackgroundColor="#333333">
     <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="20">
 
+        <!-- Logo at top of page -->
+        <Image Source="logo.png"
+       HorizontalOptions="Center"
+       VerticalOptions="Start"
+       HeightRequest="200" />
+       
+        <!-- Greeting -->
+        <Label Text="Welcome to Wordle!"
+       FontSize="24"
+       TextColor="White"
+       HorizontalTextAlignment="Center" />
+
+        <!-- Prompt player to give their name -->
+        <Label Text="Enter your Name:"
+       FontSize="18"
+       TextColor="White"
+       HorizontalTextAlignment="Center" />
+
+        <!-- Text box for name input -->
+        <Entry x:Name="nameEntry"
+       Placeholder="Enter your name"
+       BackgroundColor="White"
+       TextColor="Black"
+       FontSize="18"
+       WidthRequest="250" />
         
     </StackLayout>
 </ContentPage>

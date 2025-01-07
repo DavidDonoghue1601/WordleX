@@ -245,5 +245,11 @@ namespace WordleX
             // Navigate to SettingsPage when the settings icon is clicked
             await Navigation.PushAsync(new SettingsPage());
         }
+
+        private async void OnPlayerHistoryClicked(object sender, EventArgs e)//Player History Button (for player history page)
+        {
+            // Navigate to the Player History Page when icon clicked
+            await Navigation.PushAsync(new PlayerHistoryPage());
+        }
     }
 }

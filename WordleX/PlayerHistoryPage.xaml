@@ -1,0 +1,21 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WordleX.PlayerHistoryPage"
+             BackgroundColor="#333333">
+
+    <StackLayout Padding="20" HorizontalOptions="CenterAndExpand">
+
+        
+        <!-- Title (Player History)  -->
+        <Label Text="Player History"
+       FontSize="48"
+       FontFamily="Franklin Gothic"
+       FontAttributes="Bold"
+       HorizontalOptions="Center"
+       VerticalOptions="Start"
+       TextColor="White"
+       Margin="0,30,0,0" />
+
+
+    </StackLayout>
+</ContentPage>

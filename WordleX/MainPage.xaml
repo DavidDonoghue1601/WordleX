@@ -36,6 +36,18 @@
         </Label>
 
 
+        <!-- History icon that will navigate to the history page -->
+        <Label HorizontalOptions="End"
+       VerticalOptions="Start"
+       Margin="0,0,0,0"
+       FontSize="70">
+            📜
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnPlayerHistoryClicked" />
+            </Label.GestureRecognizers>
+        </Label>
+
+
 
         <!-- The grid -->
         <Grid x:Name="wordleGrid" RowSpacing="8" ColumnSpacing="8"

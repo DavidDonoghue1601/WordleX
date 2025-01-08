@@ -6,7 +6,7 @@
     <StackLayout Padding="20" HorizontalOptions="CenterAndExpand">
 
         
-        <!-- Title (Player History)  -->
+        <!-- Title  -->
         <Label Text="Player History"
        FontSize="48"
        FontFamily="Franklin Gothic"
@@ -15,6 +15,75 @@
        VerticalOptions="Start"
        TextColor="White"
        Margin="0,30,0,0" />
+
+        <!-- List-view of history -->
+        <ListView x:Name="playerHistoryListView" 
+          SeparatorVisibility="Default" 
+          Margin="0,20,0,0">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Padding="10" Orientation="Vertical" HorizontalOptions="CenterAndExpand">
+                            <!-- Players Name -->
+                            <StackLayout Orientation="Horizontal" Padding="5">
+                                <Label FontAttributes="Bold" HorizontalOptions="Start" VerticalOptions="Center">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="Player Name :"/>
+                                            <Span Text="    "/>
+                                            <Span Text="{Binding PlayerName}"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </StackLayout>
+
+                            <!-- time stamp -->
+                            <StackLayout Orientation="Horizontal" Padding="5">
+                                <Label FontAttributes="Bold" HorizontalOptions="Start" VerticalOptions="Center">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="Timestamp :"/>
+                                            <Span Text="    "/>
+                                            <Span Text="{Binding Timestamp}"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </StackLayout>
+
+                            <!-- Correct Word -->
+                            <StackLayout Orientation="Horizontal" Padding="5">
+                                <Label FontAttributes="Bold" HorizontalOptions="Start" VerticalOptions="Center">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="Correct Word :"/>
+                                            <Span Text="    "/>
+                                            <Span Text="{Binding CorrectWord}" TextTransform="Uppercase"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </StackLayout>
+
+                            <!-- Attempts -->
+                            <StackLayout Orientation="Horizontal" Padding="5">
+                                <Label FontAttributes="Bold" HorizontalOptions="Start" VerticalOptions="Center">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="Attempts Left :"/>
+                                            <Span Text="    "/>
+                                            <Span Text="{Binding Attempts}"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </StackLayout>
+
+                            
+
+                            <BoxView HeightRequest="1" BackgroundColor="Gray" Margin="0,10" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
 
 
     </StackLayout>

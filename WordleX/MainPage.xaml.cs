@@ -9,11 +9,13 @@ namespace WordleX
         private List<string> words; //List of words (got them from vle file)
         private int currentRow;//Current row that the wordle game is on
         private bool gameOver; //Is game over? (true / false)
+        private string PlayerName;
 
         public MainPage()
         {
             InitializeComponent();
             LoadWords();
+            PlayerName = LoadPlayerName();
 
         }
         private async void LoadWords()
@@ -140,12 +142,12 @@ namespace WordleX
             if (guessString == selectedWord)
             {
                 EndGame(true);
-
+                SavePlayerHistory(true);
             }
             else if (attemptsLeft == 0) 
             {
                 EndGame(false);
-
+                SavePlayerHistory(false);
             }
             else
             {
@@ -283,6 +285,29 @@ namespace WordleX
                 // Hiding the word when cheat mode is off
                 answerLabel.IsVisible = false;  
             }
+        }
+
+        private string LoadPlayerName()
+        {
+            var playerNameFile = Path.Combine(FileSystem.AppDataDirectory, "player_name.txt");
+
+            if (File.Exists(playerNameFile))
+            {
+                return File.ReadAllText(playerNameFile);
+            }
+
+            return "Player";  
+        }
+
+        private void SavePlayerHistory(bool won)
+        {
+            var historyFilePath = Path.Combine(FileSystem.AppDataDirectory, "player_history.txt");
+
+            // line with game details
+            string historyLine = $"{PlayerName}|{DateTime.Now:MM/dd/yyyy HH:mm:ss}|{selectedWord}|{attemptsLeft}|";  
+
+            
+            File.AppendAllText(historyFilePath, historyLine + Environment.NewLine);
         }
     }
 }

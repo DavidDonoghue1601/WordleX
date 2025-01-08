@@ -110,8 +110,18 @@
        VerticalOptions="Start"
        TextColor="White"
        Margin="0,5" />
-
         
+        <!-- Cheat Mode-->
+
+        <Label x:Name="answerLabel"
+       Text="The Wordle Answer is: [ANSWER]"
+       IsVisible="False"
+       FontSize="18"
+       TextColor="Red"
+       HorizontalOptions="Center"
+       VerticalOptions="CenterAndExpand" />
+
+
 
     </VerticalStackLayout>
 

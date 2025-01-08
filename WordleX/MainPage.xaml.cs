@@ -121,7 +121,7 @@ namespace WordleX
 
             if (guess.Any(g => string.IsNullOrEmpty(g))) //fidning out if the guess is invalid
             {
-                DisplayAlert("Invalid Guess", "Please fill all 5 boxes with letters.", "OK");
+                DisplayAlert("Invalid Guess", "Please fill all 5 boxes with letters.", "OK"); 
                 return;
             }
 
@@ -129,7 +129,7 @@ namespace WordleX
 
             if (!words.Contains(guessString))
             {
-                DisplayAlert("Invalid Word", $"{guessString} is not a valid word.", "OK");
+                DisplayAlert("Invalid Word", $"{guessString} is not a valid word.", "OK"); //word does not exist (at least in file)
                 return;
             }
             attemptsLeft--; // decrement the attempts left
@@ -142,7 +142,7 @@ namespace WordleX
                 EndGame(true);
 
             }
-            else if (attemptsLeft == 0)
+            else if (attemptsLeft == 0) 
             {
                 EndGame(false);
 
@@ -178,6 +178,18 @@ namespace WordleX
             EnableRow(0);  // Enable only the first row at the start
             attemptsLabel.Text = $"Attempts left: {attemptsLeft}";
             feedbackLabel.Text = "Try to guess the word!";
+
+            bool cheatModeActivated = Preferences.Get("CheatMode", false);  
+
+            if (cheatModeActivated)
+            {
+                answerLabel.Text = $"The Wordle Answer is: {selectedWord}";
+                answerLabel.IsVisible = true; // Answer appears when cheat mode is on
+            }
+            else
+            {
+                answerLabel.IsVisible = false; // Hidden when cheat mode is off
+            }
         }
         private void EndGame(bool won) //ends the game
         {
@@ -250,6 +262,27 @@ namespace WordleX
         {
             // Navigate to the Player History Page when icon clicked
             await Navigation.PushAsync(new PlayerHistoryPage());
+        }
+
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            // Check if Cheat Mode is activated
+            bool cheatModeActivated = Preferences.Get("CheatMode", false);  // Default is False
+
+            if (cheatModeActivated)
+            {
+                // Showing the answer when cheat mode is active
+                answerLabel.Text = $"The Wordle Answer is: {selectedWord}";
+                answerLabel.IsVisible = true;  // Making label visible
+            }
+            else
+            {
+                // Hiding the word when cheat mode is off
+                answerLabel.IsVisible = false;  
+            }
         }
     }
 }

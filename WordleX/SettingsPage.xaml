@@ -16,7 +16,22 @@
                TextColor="White"
                Margin="0,30,0,0" />
 
-        
+        <!-- Activate Cheat Mode  -->
+        <Button x:Name="toggleCheatModeButton"
+        Text="Activate Cheat Mode"
+        TextColor="White"
+        BackgroundColor="Red"
+        FontAttributes="Bold"
+        FontSize="20"   
+        CornerRadius="15"
+        Padding="15" 
+        WidthRequest="250"
+        HeightRequest="60"
+        HorizontalOptions="Center"
+        VerticalOptions="Center"
+        Clicked="OnToggleCheatModeButtonClicked" />
+
+
 
     </VerticalStackLayout>
 </ContentPage>

@@ -1,9 +1,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="WordleX.PlayerHistoryPage"
-             BackgroundColor="#333333">
-
-    <StackLayout Padding="20" HorizontalOptions="CenterAndExpand">
+             x:Class="WordleX.PlayerHistoryPage">
+    <StackLayout Padding="20" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
 
         
         <!-- Title  -->
@@ -76,8 +74,19 @@
                                 </Label>
                             </StackLayout>
 
-                            
 
+                            <!-- Emoji Grid -->
+                            <StackLayout Orientation="Vertical" Padding="5">
+                                <Label FontAttributes="Bold" HorizontalOptions="Start" VerticalOptions="Center">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="Emoji Grid :"/>
+                                            <Span Text="    "/>
+                                            <Span Text="{Binding FormattedEmojiGrid}"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </StackLayout>
                             <BoxView HeightRequest="1" BackgroundColor="Gray" Margin="0,10" />
                         </StackLayout>
                     </ViewCell>

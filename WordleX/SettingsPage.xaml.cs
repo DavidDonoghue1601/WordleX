@@ -1,6 +1,4 @@
-using Microsoft.Maui.Controls;
-using Microsoft.Maui.Storage;  // For Preferences
-using System;
+//removed these, dont make difference
 
 namespace WordleX
 {

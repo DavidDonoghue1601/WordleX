@@ -271,23 +271,23 @@ namespace WordleX
         {
             base.OnAppearing();
 
-            // Check if Cheat Mode is activated
-            bool cheatModeActivated = Preferences.Get("CheatMode", false);  // Default is False
+            // check if cheat mode is on
+            bool cheatModeActivated = Preferences.Get("CheatMode", false);  // default is false
 
             if (cheatModeActivated)
             {
-                // Showing the answer when cheat mode is active
+                // show when cheat mode on
                 answerLabel.Text = $"The Wordle Answer is: {selectedWord}";
-                answerLabel.IsVisible = true;  // Making label visible
+                answerLabel.IsVisible = true;  // visible
             }
             else
             {
-                // Hiding the word when cheat mode is off
+                // hide when cheat mode is off
                 answerLabel.IsVisible = false;  
             }
         }
 
-        private string LoadPlayerName()
+        private string LoadPlayerName() //gets player name
         {
             var playerNameFile = Path.Combine(FileSystem.AppDataDirectory, "player_name.txt");
 
@@ -304,10 +304,51 @@ namespace WordleX
             var historyFilePath = Path.Combine(FileSystem.AppDataDirectory, "player_history.txt");
 
             // line with game details
-            string historyLine = $"{PlayerName}|{DateTime.Now:MM/dd/yyyy HH:mm:ss}|{selectedWord}|{attemptsLeft}|";  
+            string historyLine = $"{PlayerName}|{DateTime.Now:MM/dd/yyyy HH:mm:ss}|{selectedWord}|{attemptsLeft}|{GetEmojiGrid()}";  //storing player history
 
-            
+
             File.AppendAllText(historyFilePath, historyLine + Environment.NewLine);
         }
+
+
+
+        private string GetEmojiGrid()
+        {
+            string emojiGrid = "";
+
+            // loop through each row for feedback
+            for (int row = 0; row < 6; row++)
+            {
+                // Get the feedback for the current row
+                string rowFeedback = string.Join("", GetRowFeedback(row)); // join the feedback tohether
+
+                // Only add a row if it contains any guess text
+                if (!string.IsNullOrWhiteSpace(rowFeedback))
+                {
+                    emojiGrid += rowFeedback + "\t";
+                }
+            }
+
+            return emojiGrid.Trim(); // ensures clean end
+        }
+
+        private string[] GetRowFeedback(int row)
+        {
+            var feedback = new string[5]; //string for feedback
+
+            for (int i = 0; i < 5; i++)
+            {
+                var entry = GetGridEntry(row, i);
+                if (entry != null)
+                {
+                    feedback[i] = entry.BackgroundColor == Colors.Green ? "🟩" :
+                                  entry.BackgroundColor == Colors.Yellow ? "🟨" : "⬛"; 
+                }
+            }
+
+            
+            return new string[] { string.Join("", feedback) };
+        }
+
     }
 }

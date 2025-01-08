@@ -1,4 +1,8 @@
-
+using Microsoft.Maui.Controls;
+using System;
+using System.IO;
+using Microsoft.Maui.Storage;
+using System.Collections.Generic;
 
 namespace WordleX
 {
@@ -34,7 +38,7 @@ namespace WordleX
                             Timestamp = parts[1],
                             CorrectWord = parts[2],
                             Attempts = parts[3],
-                            
+                            EmojiGrid = parts[4] // This will hold the emoji grid
                         };
                         historyItems.Add(historyItem);
                     }
@@ -52,7 +56,7 @@ namespace WordleX
 
         private void OnClearHistoryClicked(object sender, EventArgs e)
         {
-            var historyFilePath = Path.Combine(FileSystem.AppDataDirectory, "player_info.txt");
+            var historyFilePath = Path.Combine(FileSystem.AppDataDirectory, "player_history.txt");
 
             if (File.Exists(historyFilePath))
             {
@@ -64,10 +68,33 @@ namespace WordleX
 
     public class PlayerHistoryItem
     {
-        public required string PlayerName { get; set; } //I added the "required" part because it told me to, and removes warnings
+        public required string PlayerName { get; set; } //I added the "required" part because MAUI told me to, and removes warnings
         public required string Timestamp { get; set; }
         public required string CorrectWord { get; set; }
         public required string Attempts { get; set; }
+
+        public required string EmojiGrid { get; set; }  // This stores the emoji grid
+
+        
+        public string FormattedEmojiGrid => FormatEmojiGrid();
+
+        private string FormatEmojiGrid()
+        {
+             
+            var gridRows = EmojiGrid.Split(" "); // Split the different emojis, ensures better UI
+            string formattedGrid = string.Empty;
+
+            // Add row for each guess
+            for (int i = 0; i < 6; i++)
+            {
+                if (i < gridRows.Length)
+                {
+                    formattedGrid += string.Join(" ", gridRows.Skip(i * 5).Take(5)) + Environment.NewLine;
+                }
+            }
+
+            return formattedGrid.Trim(); // Return the formatted emoji grid
+        }
     }
         
  

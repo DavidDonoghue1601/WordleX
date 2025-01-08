@@ -85,6 +85,15 @@
             </ListView.ItemTemplate>
         </ListView>
 
+        <!-- clear History Button -->
+        <Button Text="Clear History" 
+        HorizontalOptions="Center" 
+        VerticalOptions="End" 
+        Clicked="OnClearHistoryClicked" 
+        BackgroundColor="Red" 
+        TextColor="White" 
+        Padding="10" Margin="10" />
+
 
     </StackLayout>
 </ContentPage>
